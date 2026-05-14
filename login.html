@@ -1,0 +1,227 @@
+<!-- ========================= login.html ========================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login | Code Quest</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
+
+body{
+  margin:0;
+  font-family:'Fredoka',sans-serif;
+  background:linear-gradient(to bottom right,#77a1d3,#79cbca,#e684ae);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+
+.container{
+  width:420px;
+  background:white;
+  padding:40px;
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+h1{
+  color:#79cbca;
+  margin-bottom:5px;
+}
+
+p{
+  color:#666;
+  margin-bottom:20px;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  margin:10px 0;
+  border:none;
+  border-radius:12px;
+  background:#f3f3f3;
+  font-size:16px;
+}
+
+input:focus{
+  outline:none;
+  border:2px solid #79cbca;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(to right,#77a1d3,#79cbca);
+  color:white;
+  font-size:17px;
+  cursor:pointer;
+  margin-top:20px;
+  transition:0.3s;
+}
+
+button:hover{
+  background:linear-gradient(to right,#79cbca,#e684ae);
+}
+
+.avatar-selection{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.avatar{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  object-fit:cover;
+  cursor:pointer;
+  border:4px solid transparent;
+  transition:0.3s;
+}
+
+.avatar:hover{
+  transform:scale(1.1);
+}
+
+.avatar.selected{
+  border:4px solid #e684ae;
+  box-shadow:0 0 12px rgba(230,132,174,0.6);
+}
+
+.redirect{
+  margin-top:20px;
+  font-size:15px;
+}
+
+.redirect a{
+  color:#e684ae;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Code Quest</h1>
+
+<p>Login to continue</p>
+
+<form id="login-form">
+
+<input type="text"
+placeholder="Username"
+required>
+
+<input type="password"
+placeholder="Password"
+required>
+
+<h3>Select Avatar</h3>
+
+<div class="avatar-selection">
+
+<img src="avatars/ninja.jfif"
+class="avatar"
+onclick="selectAvatar(this,'avatars/ninja.jfif')">
+
+<img src="avatars/pirate.png"
+class="avatar"
+onclick="selectAvatar(this,'avatars/pirate.png')">
+
+<img src="avatars/cute.jfif"
+class="avatar"
+onclick="selectAvatar(this,'avatars/cute.jfif')">
+
+</div>
+
+<button type="submit">
+Login
+</button>
+
+</form>
+
+<div class="redirect">
+Don't have an account?
+<a href="signup.html">Sign Up</a>
+</div>
+
+</div>
+
+<script>
+
+let selectedAvatar = "";
+
+function selectAvatar(element,avatarPath){
+
+document
+.querySelectorAll('.avatar')
+.forEach(img => img.classList.remove('selected'));
+
+element.classList.add('selected');
+
+selectedAvatar = avatarPath;
+
+}
+
+document
+.getElementById('login-form')
+.addEventListener('submit',function(e){
+
+e.preventDefault();
+
+const username = e.target[0].value;
+const password = e.target[1].value;
+
+const user =
+JSON.parse(localStorage.getItem('user'));
+
+if(
+user &&
+user.username === username &&
+user.password === password
+){
+
+if(selectedAvatar === ""){
+
+alert("Please select an avatar!");
+return;
+
+}
+
+localStorage.setItem(
+'playerAvatar',
+selectedAvatar
+);
+
+alert("Login Successful!");
+
+window.location.href = "index.html";
+
+}else{
+
+alert("Invalid username or password!");
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

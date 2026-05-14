@@ -1,0 +1,51 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snake and Ladders Quiz Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Snake and Ladders Quiz Game</h1>
+
+<div class="selectors">
+  <div>
+    <label for="language-select">Select Language:</label>
+    <select id="language-select">
+      <option value="C++">C++</option>
+      <option value="Python">Python</option>
+      <option value="Java">Java</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="difficulty-select">Select Difficulty:</label>
+    <select id="difficulty-select">
+      <option value="Easy">Easy</option>
+      <option value="Medium">Medium</option>
+      <option value="Hard">Hard</option>
+    </select>
+  </div>
+</div>
+
+  <div id="board-container">
+    <img id="board-image" src="board-background.jpg" alt="Game Board" />
+    <img id="player-piece" class="piece player-piece" />
+    <div id="ai-piece" class="piece ai-piece"></div>
+  </div>
+
+  <div id="dice-display">⚀</div>
+
+<button id="roll-dice" disabled>Roll Dice</button>
+  <div id="message"></div>
+  <div id="question-container" style="display: none;">
+    <p id="question"></p>
+    <div id="choices"></div>
+    <button id="submit-answer">Submit Answer</button>
+  </div>
+  <div id="board-popup" style="display: none;"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

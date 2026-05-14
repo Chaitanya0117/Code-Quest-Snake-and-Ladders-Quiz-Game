@@ -1,0 +1,247 @@
+body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to bottom right, #77a1d3, #79cbca, #e684ae);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    #board {
+  background-image: url('board-background.jpg');
+  background-size: cover;
+  width: 500px;
+  height: 500px;
+  position: relative;
+}
+
+    #board-container {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      margin: 20px auto;
+    }
+
+    #board-image {
+      width: 100%;
+      height: 100%;
+      border: 2px solid #333;
+    }
+
+    .piece {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      position: absolute;
+      transition: all 0.5s ease-in-out;
+      transform: rotate(180deg);
+    }
+
+    .player-piece {
+      background-color: gold;
+      z-index: 10;
+      transform: rotate(0deg);
+}
+  
+    .ai-piece {
+      background-color: silver;
+      z-index: 10;
+      transform: rotate(0deg);
+      overflow: hidden;
+    }
+
+    #roll-dice {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      color: black;
+      background: lightblue;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    #roll-dice:hover:enabled {
+      background: #add8e6;
+      transform: scale(1.05);
+    }
+
+    #roll-dice:disabled {
+      background: #ccc;
+      color: #666;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    #question-container {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #191717;
+    }
+
+    #choices label {
+      display: block;
+      background: linear-gradient(135deg, #f0f8ff, #a0d8ef, #c1e1c1);
+      margin: 8px auto;
+      padding: 10px 15px;
+      border-radius: 8px;
+      width: 300px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s, transform 0.2s;
+      border: 1px solid #ccc;
+      font-weight: bold;
+    }
+
+    #choices label:hover {
+      background-color: #d9f0ff;
+      transform: scale(1.02);
+    }
+    #board-popup {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #222;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1000;
+  min-width: 250px;
+}
+
+    #submit-answer {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(135deg, #f0f8ff, #a0d8ef, #c1e1c1);
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    #submit-answer:hover {
+      background: linear-gradient(135deg, #f0f8ff, #a0d8ef, #c1e1c1);
+      transform: scale(1.05);
+    }
+
+    #language-select {
+      font-size: 16px;
+      padding: 8px;
+      background: linear-gradient(135deg, #f0f8ff, #a0d8ef, #c1e1c1);
+      margin: 10px auto;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+    .selectors {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+#difficulty-select {
+  font-size: 16px;
+  padding: 8px;
+  background: linear-gradient(135deg, #f0f8ff, #a0d8ef, #c1e1c1);
+  margin: 10px auto;
+  font-weight: bold;
+  border-radius: 8px;
+}
+.piece {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  transition: all 0.4s ease;
+  object-fit: contain;
+}
+/* ===== DICE CONTAINER ===== */
+.dice-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 18px 0;
+}
+
+/* ===== DICE BOX ===== */
+#dice {
+  width: 180px;
+  height: 180px;
+
+  background: linear-gradient(145deg, #ffffff, #f2f2f2);
+
+  border-radius: 35px;
+  border: 6px solid #79cbca;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+
+  padding: 18px;
+  box-sizing: border-box;
+
+  margin: 20px auto;
+
+  box-shadow:
+    0 14px 28px rgba(0,0,0,0.22),
+    inset 0 3px 8px rgba(255,255,255,0.9);
+
+  transition: transform 0.3s ease;
+}
+/* Dice hover effect */
+#dice:hover {
+  transform: scale(1.06);
+}
+
+/* ===== DICE DOTS ===== */
+.dot {
+  width: 28px;
+  height: 28px;
+
+  background: #222;
+
+  border-radius: 50%;
+
+  align-self: center;
+  justify-self: center;
+
+  box-shadow:
+    inset 1px 1px 2px rgba(255,255,255,0.4),
+    2px 2px 5px rgba(0,0,0,0.3);
+}
+
+/* ===== ROLL ANIMATION ===== */
+.roll-animation {
+  animation: rollDice 0.6s ease;
+}
+
+@keyframes rollDice {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: rotate(90deg) scale(1.1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(0.95);
+  }
+
+  75% {
+    transform: rotate(270deg) scale(1.1);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}

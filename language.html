@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select Language | Code Quest</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Fredoka', sans-serif;
+      background: linear-gradient(to bottom right, #77a1d3, #79cbca, #e684ae);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 42px;
+      color: #ffffff;
+      text-shadow: 2px 2px #6c8cd5;
+      margin: 0;
+    }
+
+    .header p {
+      font-size: 18px;
+      color: #f0f0f0;
+      font-style: italic;
+      margin-top: 5px;
+    }
+
+    .lang-container {
+      background: #ffffff;
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(119, 161, 211, 0.3);
+      text-align: center;
+      width: 340px;
+      transition: transform 0.3s ease;
+    }
+
+    .lang-container:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 40px rgba(230, 132, 174, 0.4);
+    }
+
+    .lang-container h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #79cbca;
+    }
+
+    .language-options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .language-options button {
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(to right, #77a1d3, #79cbca);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .language-options button:hover {
+      background: linear-gradient(to right, #79cbca, #e684ae);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Code Quest</h1>
+    <p>Learning made fun</p>
+  </div>
+
+  <div class="lang-container">
+    <h2>Choose Your Coding Language</h2>
+    <div class="language-options">
+      <button onclick="startGame('Java')">Java</button>
+      <button onclick="startGame('Python')">Python</button>
+      <button onclick="startGame('C++')">C++</button>
+    </div>
+  </div>
+
+  <script>
+    function startGame(language) {
+      localStorage.setItem("selectedLanguage", language);
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
